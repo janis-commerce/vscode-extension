@@ -1,0 +1,18 @@
+{
+	"iconDefinitions": {
+	  "janiscommerce": {
+		 "iconPath": "./images/janiscommerce.svg"
+	  },
+	  "janiscommerce-light": {
+		"iconPath": "./images/janiscommerce.svg"
+	 }
+	},
+	"fileNames": {
+		".janiscommercerc.json": "janiscommerce"
+	},
+	"light": {
+		"fileNames": {
+			".janiscommercerc.json": "janiscommerce-light"
+		}
+	}
+ }

@@ -1,0 +1,9 @@
+{
+	"Get session instance": {
+		"prefix": "getSessionInstance",
+		"body": [
+			"const ${1/(.)/${1:/downcase}/} = this.session.getSessionInstance(${1:class});",
+			"$0"
+		]
+	}
+}
