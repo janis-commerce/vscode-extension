@@ -51,6 +51,7 @@
     "vscode-test": "^1.4.1"
   },
   "displayName": "JanisCommerce",
+  "icon": "images/logo-128px.png",
   "engines": {
     "vscode": "^1.51.0"
   },
