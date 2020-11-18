@@ -1,5 +1,5 @@
 {
-  "name": "@janiscommerce/vscode-extension",
+  "name": "@janiscommerce/vscode",
   "version": "0.1.0",
   "description": "Visual Studio Code extension for Janis Commerce environments",
   "main": "./out/extension.js",
