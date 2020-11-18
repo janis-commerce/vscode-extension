@@ -50,6 +50,7 @@
     "typescript": "^4.0.5",
     "vscode-test": "^1.4.1"
   },
+  "publisher": "fizzmod",
   "displayName": "JanisCommerce",
   "icon": "images/logo-128px.png",
   "engines": {
