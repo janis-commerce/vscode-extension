@@ -5,5 +5,24 @@
 			"const ${1/(.)/${1:/downcase}/} = this.session.getSessionInstance(${1:class});",
 			"$0"
 		]
+	},
+	"Use strict mode": {
+		"prefix": "strict",
+		"body": [
+			"'use strict';",
+			"",
+			""
+		]
+	},
+	"Exported class boilerplate": {
+		"prefix": "newclass",
+		"body": [
+			"'use strict';",
+			"",
+			"module.exports = class $1 {",
+			"\t$0",
+			"};",
+			""
+		]
 	}
 }

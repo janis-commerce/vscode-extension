@@ -8,5 +8,11 @@ This is the official VSCode extension for the `@janiscommerce` ecosystem.
 
 ## Code Snippets
 
+- Generic Javascript
+  - `strict`
+
+- New file boilerplate
+  - `newclass`
+
 - [API Session](https://www.npmjs.com/package/@janiscommerce/api-session)
   - `getSessionInstance`
