@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.0] - 2021-01-21
+### Added
+- `strict` and `newclass` snippets
+
 ## [0.1.2] - 2020-11-18
 ### Fixed
 - Added missing seti-ui font icon
