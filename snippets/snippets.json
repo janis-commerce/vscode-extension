@@ -24,5 +24,90 @@
 			"};",
 			""
 		]
+	},
+	"Require a @janiscommerce package": {
+		"scope": "javascript",
+		"prefix": "j-rqr",
+		"body": [
+			"const ${1:JanisModule} = require('@janiscommerce/${2:package-name}');",
+			"$0"
+		],
+		"description": "Require a @janiscommerce package"
+	},
+	"Create a model": {
+		"scope": "javascript",
+		"prefix": "model",
+		"body": [
+			"'use strict';",
+			"\nconst Model = require('@janiscommerce/model');",
+			"\nclass ${1:MyModel} extends Model {",
+			"${3:\n\tget databaseKey() {\n\t\treturn '$4';\n\t\\}}",
+			"${5:\n\tstatic get shouldCreateLogs() {\n\t\treturn false;\n\t\\}}",
+			"${6:\n\tstatic get uniqueIndexes() {\n\t\treturn [$7];\n\t\\}}",
+			"${8:\n\tstatic get table() {\n\t\treturn '$0';\n\t\\}}",
+			"}",
+			"\nmodule.exports = ${1:MyModel};\n"
+		]
+	},
+	"Create a generic API": {
+		"scope": "javascript",
+		"prefix": "api-generic",
+		"body": [
+			"'use strict';",
+			"\nconst { API } = require('@janiscommerce/api');",
+			"${2:const { struct \\} = require('@janiscommerce/superstruct');}",
+			"\nclass ${1:MyAPI} extends API {",
+			"${3:\n\tget struct() {\n\n\t\treturn struct.partial({\n\t\t\t$4\n\t\t\\});\n\t\\}}",
+			"${5:\n\tasync validate() {\n\n\t\t${6:// your api validate here}\n\t\\}}",
+			"\n\tasync process() {\n\n\t\t${0:// your api process here}\n\t}",
+			"}",
+			"\nmodule.exports = ${1:MyAPI};\n"
+		]
+	},
+	"Create an API Save": {
+		"scope": "javascript",
+		"prefix": "api-save",
+		"body": [
+			"'use strict';",
+			"\nconst { ApiSaveData } = require('@janiscommerce/api-save');",
+			"${2:const { struct \\} = require('@janiscommerce/superstruct');}",
+			"\nclass ${1:MyAPI} extends ApiSaveData {",
+			"${3:\n\tstatic get mainStruct() {\n\n\t\treturn struct.partial({\n\t\t\t$4\n\t\t\\});\n\t\\}}",
+			"${5:\n\tasync validate() {\n\n\t\tawait super.validate();\n\n\t\t${6:// your api validate here}\n\t\\}}",
+			"${7:\n\tasync process() {\n\n\t\t${8:// your api process here}\n\n\t\tawait super.process();\n\t\\}}",
+			"${9:\n\tasync postSaveHook(id, savedItem) {\n\n\t\t${0:// your post save hook here}\n\t\\}}",
+			"}",
+			"\nmodule.exports = ${1:MyAPI};\n"
+		]
+	},
+	"Create an API Test":{
+		"scope": "javascript",
+		"prefix": "api-test",
+		"body": [
+			"'use strict';",
+			"\nconst APITest = require('@janiscommerce/api-test');",
+			"const ${1:MyAPI} = require('${2:./../../../src/api/}${3:entity}/${4:method}');",
+			"\ndescribe('APIs', () => {",
+			"\n\tdescribe('${1:MyAPI}', () => {",
+			"\n\t\tAPITest(${1:MyAPI}, '/api/${3:entity}', [",
+			"\t\t\t$0",
+			"\t\t]);",
+			"\t});",
+			"});\n"
+		]
+	},
+	"Create an API Test item":{
+		"scope": "javascript",
+		"prefix": "api-test-item",
+		"body": [
+			"{",
+			"\tdescription: '${1:Should do something great when the conditions are right}',",
+			"${2:\tsession: true,}",
+			"${3:\trequest: {\n\t\tdata: $4\n\t\\},}",
+			"\tresponse: {\n\t\tcode: ${5:200}${6:,\n\t\tbody: {\n\t\t\t$7\n\t\t\\}}\n\t},",
+			"\tbefore: sandbox => {\n\t\t${8:// your stubs here...}\n\t},",
+			"\tafter: (response, sandbox) => {\n\t\t${9:// your assertions here...}\n\t}",
+			"}"
+		]
 	}
 }
