@@ -10,8 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `Create a model` snippet
 - `Create a generic API` snippet
 - `Create an API Save` snippet
+- `Create an API List` snippet
+- `API List value mapper item` snippet
+- `Create an API Get` snippet
 - `Create an API test` snippet
 - `Create an API Test item` snippet
+- `Create a Lambda function` snippet
 
 ## [0.2.0] - 2021-01-21
 ### Added
