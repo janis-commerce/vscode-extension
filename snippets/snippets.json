@@ -148,12 +148,13 @@
 		"body": [
 			"'use strict';",
 			"\nconst { Handler, ${1:LambdaWithClientAndPayload} } = require('@janiscommerce/lambda');",
-			"\nclass ${2:MyFunction} extends $1 {",
-			"${3:\n\tget struct() {\n\n\t\treturn struct.partial({\n\t\t\t$4\n\t\t\\});\n\t\\}}",
-			"${5:\n\tasync validate() {\n\n\t\t${6:// your lambda validate here}\n\t\\}}",
+			"${2:const { struct \\} = require('@janiscommerce/superstruct');}",
+			"\nclass ${3:MyFunction} extends $1 {",
+			"${4:\n\tget struct() {\n\n\t\treturn struct.partial({\n\t\t\t$5\n\t\t\\});\n\t\\}}",
+			"${6:\n\tasync validate() {\n\n\t\t${7:// your lambda validate here}\n\t\\}}",
 			"\n\tasync process() {\n\n\t\t${0:// your lambda process here}\n\t}",
 			"};\n",
-			"\nmodule.exports.handler = (...args) => Handler.handle($2, ...args);\n"
+			"\nmodule.exports.handler = (...args) => Handler.handle($3, ...args);\n"
 		]
 	}
 }
