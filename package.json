@@ -1,6 +1,6 @@
 {
   "name": "janiscommerce-vscode",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Visual Studio Code extension for Janis Commerce environments",
   "main": "./out/extension.js",
   "scripts": {
