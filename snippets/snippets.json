@@ -24,5 +24,137 @@
 			"};",
 			""
 		]
+	},
+	"Require a @janiscommerce package": {
+		"scope": "javascript",
+		"prefix": "j-rqr",
+		"body": [
+			"const ${1:JanisModule} = require('@janiscommerce/${2:package-name}');",
+			"$0"
+		],
+		"description": "Require a @janiscommerce package"
+	},
+	"Create a model": {
+		"scope": "javascript",
+		"prefix": "model",
+		"body": [
+			"'use strict';",
+			"\nconst Model = require('@janiscommerce/model');",
+			"\nmodule.exports = class ${1:MyModel} extends Model {",
+			"${3:\n\tget databaseKey() {\n\t\treturn '$4';\n\t\\}}",
+			"${5:\n\tstatic get shouldCreateLogs() {\n\t\treturn false;\n\t\\}}",
+			"${6:\n\tstatic get indexes() {\n\t\treturn [$7];\n\t\\}}",
+			"${8:\n\tstatic get table() {\n\t\treturn '$0';\n\t\\}}",
+			"};\n"
+		]
+	},
+	"Create a generic API": {
+		"scope": "javascript",
+		"prefix": "api-generic",
+		"body": [
+			"'use strict';",
+			"\nconst { API } = require('@janiscommerce/api');",
+			"${2:const { struct \\} = require('@janiscommerce/superstruct');}",
+			"\nmodule.exports = class ${1:MyAPI} extends API {",
+			"${3:\n\tget struct() {\n\n\t\treturn struct.partial({\n\t\t\t$4\n\t\t\\});\n\t\\}}",
+			"${5:\n\tasync validate() {\n\n\t\t${6:// your api validate here}\n\t\\}}",
+			"\n\tasync process() {\n\n\t\t${0:// your api process here}\n\t}",
+			"};\n"
+		]
+	},
+	"Create an API Save": {
+		"scope": "javascript",
+		"prefix": "api-save",
+		"body": [
+			"'use strict';",
+			"\nconst { ApiSaveData } = require('@janiscommerce/api-save');",
+			"${1:const { struct \\} = require('@janiscommerce/superstruct');}",
+			"${2:\nconst mainStruct = struct.partial({\n\t$3\n\\});}",
+			"\nmodule.exports = class ${4:MyAPI} extends ApiSaveData {",
+			"${5:\n\tstatic get mainStruct() {\n\t\treturn mainStruct;\n\t\\}}",
+			"${6:\n\tasync postStructValidate() {\n\n\t\t${7:// your validation here}\n\t\\}}",
+			"${8:\n\tformat(record) {\n\n\t\t${9:return record;}\n\t\\}}",
+			"${10:\n\tasync postSaveHook(id, savedItem) {\n\n\t\t${0:// your post save hook here}\n\t\\}}",
+			"};\n"
+		]
+	},
+	"Create an API List": {
+		"scope": "javascript",
+		"prefix": "api-list",
+		"body": [
+			"'use strict';",
+			"\nconst {\n\tApiListData${1:,\n\tFilterMappers: {${2:\n\t\tsearchMapper,}${3:\n\t\tdateMapper}\n\t\\}}\n} = require('@janiscommerce/api-list');",
+			"\nmodule.exports = class ${4:MyAPI} extends ApiListData {",
+			"${5:\n\tget sortableFields() {\n\n\t\treturn [\n\t\t\t$6\n\t\t];\n\t\\}}",
+			"${7:\n\tget availableFilters() {\n\n\t\treturn [\n\t\t\t$8\n\t\t];\n\t\\}}",
+			"${9:\n\tasync formatRows(rows) {\n\n\t\treturn rows.map(${10:row} => {\n\t\t\t${0:// your formatting here...}\n\t\t\\});\n\t\\}}",
+			"}\n"
+		]
+	},
+	"API List value mapper":{
+		"scope": "javascript",
+		"prefix": "api-list-value-mapper",
+		"body": [
+			"{",
+			"\tname: '${1:myField}',${2:\n\tinternalName: '${3:myInternalFieldName}',}",
+			"\tvalueMapper: ${4:myValueMapper}",
+			"},$0"
+		]
+	},
+	"Create an API Get": {
+		"scope": "javascript",
+		"prefix": "api-get",
+		"body": [
+			"'use strict';",
+			"\nconst { ApiGet } = require('@janiscommerce/api-get');",
+			"\nmodule.exports = class ${1:MyAPI} extends ApiGet {",
+			"${2:\n\tasync format(${3:item}) {\n\t\t\t${0:// your formatting here...}\n\t\\}}",
+			"}\n"
+		]
+	},
+	"Create an API Test": {
+		"scope": "javascript",
+		"prefix": "api-test",
+		"body": [
+			"'use strict';",
+			"\nconst APITest = require('@janiscommerce/api-test');",
+			"const ${1:MyAPI} = require('${2:../../../src/api/}${3:entity}/${4:method}');",
+			"\ndescribe('APIs', () => {",
+			"\n\tdescribe('${1:MyAPI}', () => {",
+			"\n\t\tAPITest(${1:MyAPI}, '/api/${3:entity}', [",
+			"\t\t\t$0",
+			"\t\t]);",
+			"\t});",
+			"});\n"
+		]
+	},
+	"Create an API Test item": {
+		"scope": "javascript",
+		"prefix": "api-test-item",
+		"body": [
+			"{",
+			"\tdescription: 'Should ${1:do something great} when ${2:the conditions are right}',",
+			"${3:\tsession: true,}",
+			"${4:\trequest: {\n\t\tdata: $5\n\t\\},}",
+			"\tresponse: {\n\t\tcode: ${6:200}${7:,\n\t\tbody: {\n\t\t\t$8\n\t\t\\}}\n\t},",
+			"\tbefore: sinon => {\n\t\t${9:// your stubs here...}\n\t},",
+			"\tafter: (response, sinon) => {\n\t\t${10:// your assertions here...}\n\t}",
+			"}"
+		]
+	},
+	"Create a Lambda Function": {
+		"scope": "javascript",
+		"prefix": "lambda-function",
+		"body": [
+			"'use strict';",
+			"\nconst { Handler, ${1:LambdaWithClientAndPayload} } = require('@janiscommerce/lambda');",
+			"${2:const { struct \\} = require('@janiscommerce/superstruct');}",
+			"\nclass ${3:MyFunction} extends $1 {",
+			"${4:\n\tget struct() {\n\n\t\treturn struct.partial({\n\t\t\t$5\n\t\t\\});\n\t\\}}",
+			"${6:\n\tasync validate() {\n\n\t\t${7:// your lambda validate here}\n\t\\}}",
+			"\n\tasync process() {\n\n\t\t${0:// your lambda process here}\n\t}",
+			"};\n",
+			"\nmodule.exports.handler = (...args) => Handler.handle($3, ...args);\n"
+		]
 	}
 }
