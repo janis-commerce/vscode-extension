@@ -1,0 +1,120 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://janis.im/janiscommerce/configuration",
+	"title": "JanisCommerce configuration file",
+	"type": "object",
+	"properties": {
+		"authorizersAccountId": {
+			"$ref": "#/definitions/authorizersAccountId"
+		},
+		"logRoleArn": {
+			"$ref": "#/definitions/logRoleArn"
+		},
+		"database": {
+			"$ref": "#/definitions/databaseMapping"
+		},
+		"newClientsDatabases": {
+			"$ref": "#/definitions/databaseMapping"
+		},
+		"routerConfig": {
+			"$ref": "#/definitions/routerConfig"
+		}
+	},
+	"additionalProperties": true,
+	"required": ["authorizersAccountId"],
+	"definitions": {
+		"authorizersAccountId": {
+			"type": "string",
+			"title": "Authorizers Account ID",
+			"description": "The ID of the AWS Account where the Authorizers are deployed"
+		},
+		"logRoleArn": {
+			"type": "string",
+			"title": "Log Role ARN",
+			"description": "The ARN of a role that has permissions to create logs in Janis Trace Service"
+		},
+		"databaseMapping": {
+			"type": "object",
+			"title": "Database mapping",
+			"description": "A mapping from database codes to database operations configurations",
+			"properties": {},
+			"additionalProperties": {
+				"$ref": "#/definitions/database"
+			}
+		},
+		"database": {
+			"type": "object",
+			"title": "Database operations configuration",
+			"description": "A mapping from database operations to database configurations",
+			"properties": {
+				"write": {
+					"$ref": "#/definitions/databaseConfig"
+				},
+				"read": {
+					"$ref": "#/definitions/databaseConfig"
+				}
+			},
+			"required": ["write"],
+			"additionalProperties": false
+		},
+		"databaseConfig": {
+			"type": "object",
+			"title": "Database configuration",
+			"description": "Defines the configurations and behaviour of a database connection",
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["mongodb", "mysql"],
+					"description": "The database engine name"
+				},
+				"protocol": {
+					"type": "string",
+					"enum": ["mongo://", "mongodb+srv://"],
+					"description": "The protocol used to connecto to the mongodb server. (Applies only for type: mongodb)"
+				},
+				"host": {
+					"type": "string",
+					"deprecated": true,
+					"description": "The host of the DB server (Use AWS Secrets Manager instead always that it's possible)"
+				},
+				"user": {
+					"type": "string",
+					"deprecated": true,
+					"description": "The user to use to connect to the DB server (Use AWS Secrets Manager instead always that it's possible)"
+				},
+				"password": {
+					"type": "string",
+					"deprecated": true,
+					"description": "The password to use to connect to the DB server (Use AWS Secrets Manager instead always that it's possible)"
+				},
+				"database": {
+					"type": "string",
+					"description": "The name of the database to use as default"
+				},
+				"skipFetchCredentials": {
+					"type": "boolean",
+					"description": "Set this if you want to intentionally skip credentials from AWS Secrets Manager, for example, in a local environment",
+					"default": false
+				}
+			},
+			"additionalProperties": false
+		},
+		"routerConfig": {
+			"type": "object",
+			"title": "Janis Router Service configuration",
+			"description": "",
+			"properties": {
+				"endpoint": {
+					"type": "string",
+					"description": "The API of Janis Router Service where endpoints will be fetched from"
+				},
+				"schema": {
+					"type": "string",
+					"description": "The API of Janis Router Service where OpenAPI schemas will be fetched from"
+				}
+			},
+			"required": ["endpoint"],
+			"additionalProperties": false
+		}
+	}
+}

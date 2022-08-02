@@ -65,6 +65,12 @@
     "onCommand:janiscommerce.cheer"
   ],
   "contributes": {
+    "jsonValidation": [
+      {
+        "fileMatch": ".janiscommercerc.json",
+        "url": "./lib/resources/schemas/janiscommercerc-schema.json"
+      }
+    ],
     "iconThemes": [
       {
         "id": "janiscommerce",

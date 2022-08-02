@@ -2,6 +2,10 @@
 
 This is the official VSCode extension for the `@janiscommerce` ecosystem.
 
+## Language specifications
+
+- JSON Schema for `.janiscommercerc.json` config file
+
 ## UI Customizations
 
 - Custom file icon for `.janiscommercerc.json` config file ([@janiscommerce/settings](http://npmjs.com/package/@janiscommerce/settings))
